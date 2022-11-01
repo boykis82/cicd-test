@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: <AWS ECR Repository URL>
+  repository: 077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: red
@@ -50,12 +50,12 @@ ingress:
   annotations: 
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
-      alb.ingress.kubernetes.io/subnets: <Public Subnet1 ID>, <Public Subnet2 ID>
+      alb.ingress.kubernetes.io/subnets: subnet-00b424aaa189abfa7, subnet-056c4dace8e3faa46
       kubernetes.io/ingress.class: alb
-      alb.ingress.kubernetes.io/certificate-arn: <ACM의 ARN>
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:077165079818:certificate/3d738572-ceaa-40d5-b7ab-47d084e43fd1
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]' 
   hosts:
-    - host: <마이크로서비스 DNS도메인명>
+    - host: bubblepool.realimpact.click
       paths:
         - path: /
           pathType: Prefix
