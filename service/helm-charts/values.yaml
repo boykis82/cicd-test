@@ -42,7 +42,8 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 443
+  #port: 443
+  port: 80
 
 ingress:
   enabled: true
@@ -52,8 +53,9 @@ ingress:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/subnets: subnet-00b424aaa189abfa7, subnet-056c4dace8e3faa46
       kubernetes.io/ingress.class: alb
-      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:077165079818:certificate/3d738572-ceaa-40d5-b7ab-47d084e43fd1
-      alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]' 
+      #alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:077165079818:certificate/3d738572-ceaa-40d5-b7ab-47d084e43fd1
+      #alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]' 
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]' 
   hosts:
     - host: bubblepool.realimpact.click
       paths:
