@@ -8,7 +8,7 @@ image:
   repository: 077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: red
+  tag: blue
 
 
 container:
