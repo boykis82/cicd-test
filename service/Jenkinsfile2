@@ -21,6 +21,8 @@ podTemplate(label: 'docker-build',
         directoryPath = 'service'
         awsECRURL = '077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr'
         imageTag = 'green'
+        awsKey = 'aws-key'
+        awsRegion = 'ap-northeast-2'
 
         stage('Checkout') {
             container('docker'){
@@ -35,5 +37,13 @@ podTemplate(label: 'docker-build',
 				}
 			}
 		}
+
+		stage('ECR Push') {
+			container('docker') {
+				docker.withRegistry("https://${awsECRURL}", "ecr:${awsRegion}:${awsKey}") {
+					image.push()
+				}
+			}
+		}        
     }
 }
