@@ -28,14 +28,4 @@ podTemplate(
     volumes: [ 
         hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'), 
     ]
-) {
-    node('docker-build') {
-        stages {
-		    stage('Checkout') {
-                container('docker') {
-                    checkout scm
-                }
-		    }
-	    }
-    }
-}
+)
