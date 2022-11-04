@@ -1,3 +1,14 @@
+def awsECRURL = "077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr"
+def awsKey = "aws-key"
+def awsRegion = "ap-northeast-2"
+// def branch="master"
+// def commitMsg="cicd test"
+def directoryPath = "service"
+// def githubEmail="boykis82@gmail.com"
+// def githubKey="github-key"
+// def githubSSHURL="git@github.com:boykis82/cicd-test.git"
+def imageTag = "green"
+
 
 podTemplate(label: 'docker-build',
   containers: [
