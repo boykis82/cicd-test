@@ -2,12 +2,12 @@ awsECRURL="077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr"
 awsKey="aws-key"
 awsRegion="ap-northeast-2"
 branch="master"
-commitMsg="cicd test"
+commitMsg="change title"
 directoryPath="service"
 githubEmail="boykis82@gmail.com"
 githubKey="github-key"
 githubSSHURL="git@github.com:boykis82/cicd-test.git"
-imageTag="green"
+imageTag="red"
 
 podTemplate(label: 'docker-build',
   containers: [
