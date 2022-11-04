@@ -35,20 +35,5 @@ podTemplate(label: 'docker-build',
             }
         }
 
-		stage('Docker Build') {
-			dir(path: "${directoryPath}/container"){
-				container('docker') {
-					image = docker.build("${awsECRURL}:${imageTag}","--build-arg COLOR=${imageTag} .")
-				}
-			}
-		}
-
-		stage('ECR Push') {
-			container('docker') {
-				docker.withRegistry("https://${awsECRURL}", "ecr:${awsRegion}:${awsKey}") {
-					image.push()
-				}
-			}
-		}        
     }
 }
