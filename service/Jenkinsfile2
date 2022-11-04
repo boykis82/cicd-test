@@ -18,9 +18,9 @@ podTemplate(label: 'docker-build',
   ]
 ) {
     node('docker-build') {
-        def directoryPath = 'service'
-        def awsECRURL = '077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr'
-        def imageTag = 'green'
+        directoryPath = 'service'
+        awsECRURL = '077165079818.dkr.ecr.ap-northeast-2.amazonaws.com/myecr'
+        imageTag = 'green'
 
         stage('Checkout') {
             container('docker'){
