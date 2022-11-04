@@ -31,13 +31,13 @@ podTemplate(label: 'docker-build',
   node('docker-build') {
     stages {
 		stage('Checkout') {
-            container('docker'){
+            container('docker') {
                 checkout scm
             }
 		}
 
 		stage('Docker Build') {
-			dir(path: "${directoryPath}/container"){
+			dir(path: "${directoryPath}/container") {
 				container('docker') {
 					image = docker.build("${awsECRURL}:${imageTag}","--build-arg COLOR=${imageTag} .")
 				}
@@ -52,8 +52,8 @@ podTemplate(label: 'docker-build',
 			}
 		}
 
-        stage('Deploy'){
-            container('argo'){
+        stage('Deploy' {
+            container('argo') {
                 checkout(
                     [
                         $class: 'GitSCM',
@@ -71,7 +71,7 @@ podTemplate(label: 'docker-build',
                         ]
                     ]
                 )
-                sshagent(credentials: ["${githubKey}"]){
+                sshagent(credentials: ["${githubKey}"]) {
                     sh("""
                         #!/usr/bin/env bash
                         set +x
@@ -89,4 +89,5 @@ podTemplate(label: 'docker-build',
             }
         }		
 	}
+  }
 }
